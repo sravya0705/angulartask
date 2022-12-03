@@ -1,0 +1,48 @@
+<div *ngIf="restaurantDetails" fxLayout="column" fxLayoutGap="2%">
+<div fxFlex="30%" fxLayout="row" fxLayoutGap="5%">
+<div fxFlex="45%" fxLayout="column" fxLayoutGap="3%">
+<div fxFlex="10%">
+    <h2>{{restaurantDetails.restaurantName}}</h2>
+</div>
+<div fxFlex="35%">
+    <p>
+        {{restaurantDetails.restaurantDescription}}
+    </p>
+</div>
+<div fxFlex="15%" fxLayout="row">
+    <div fxFlex="5%"><mat-icon class="iconAlign">access_time</mat-icon></div>
+    <div fxFlex>
+    <div>{{restaurantDetails.openingHours.split(',')[0]}}</div>
+    <div>{{restaurantDetails.openingHours.split(',')[1]}}</div></div>
+</div>
+<div fxFlex="10%"><mat-icon class="iconAlign">call</mat-icon>{{restaurantDetails.contactNumber}}</div>
+<div fxFlex="10%"><mat-icon class="iconAlign">language</mat-icon>{{restaurantDetails.websiteUrl}}</div>
+</div>
+<div fxFlex="45%">
+    <img [src]="restaurantDetails.restaurantImage" class="imgAlign">
+</div>
+</div>
+<mat-divider></mat-divider>
+<div fxFlex="7%" *ngIf="itemCategory.length">
+    <mat-chip-list>
+        <mat-chip>All</mat-chip>
+        <mat-chip *ngFor="let ele of itemCategory">
+            {{ele.item}} ({{ele.count}})
+        </mat-chip>
+      </mat-chip-list>
+</div>
+<div fxFlex="3%"><h2>Menu</h2></div>
+    <mat-grid-list fxFlex cols="3" rowHeight="300px" gutterSize="15px">
+        <mat-grid-tile *ngFor="let menu of menuDetails">
+            <mat-card style="border-radius: 25px; width:700rem">
+                <img mat-card-image [src]="menu.itemPhoto" width="200px" height="200px" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <div fxLayout="row">
+                        <div fxFlex="80"><h3>{{menu.itemName}}</h3></div>
+                        <div fxFlex="15">${{menu.itemCost}}</div>
+                    </div>
+                </mat-card-content>
+              </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+</div>

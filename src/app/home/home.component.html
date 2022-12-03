@@ -1,0 +1,40 @@
+<div fxLayout="column" fxLayoutGap="2%" fxFlex="100%">
+  <div fxFlex="5%"><h2>Category</h2></div>
+  <div fxFlex="5%" fxLayout="row" fxLayoutGap="5%">
+    <div fxFlex="10%">
+        <button mat-raised-button disabled><img src="../../assets/pizza.png"></button> Baked
+    </div>
+    <div fxFlex="10%">
+        <button mat-raised-button disabled><img src="../../assets/burger.png"></button> Sweet
+    </div>
+    <div fxFlex="12%">
+        <button mat-raised-button disabled><img src="../../assets/pizza.png"></button> Hot Dish
+    </div>
+    <div fxFlex="12%">
+        <button mat-raised-button disabled><img src="../../assets/mc.png"></button> Fast Food
+    </div>
+    <div fxFlex="10%">
+        <button mat-raised-button disabled><img src="../../assets/mc.png"></button> Salads
+    </div>
+  </div>
+  <div fxFlex="5%"><h2>Restaurants</h2></div>
+  <div fxFlex>
+    <mat-grid-list cols="3" rowHeight="300px" gutterSize="15px">
+        <mat-grid-tile *ngFor="let item of restaurantDetails?.allRestaurants">
+            <mat-card style="border-radius: 25px;">
+                <img mat-card-image [src]="item.restaurantImage" width="150px" height="150px" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <div fxLayout="row">
+                        <div fxFlex="80"><h3>{{item.restaurantName}}</h3></div>
+                        <div fxFlex="15" *ngIf="item.isOpen"> <button mat-stroked-button color="primary" (click)="onOpen(item.restaurantName)">Open Now</button></div>
+                        <div fxFlex="15" *ngIf="!item.isOpen"> <button mat-stroked-button color="warn">Closed</button></div>
+                    </div>
+                  <p>
+                    {{item.restaurantDescription}}
+                  </p>
+                </mat-card-content>
+              </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+</div>

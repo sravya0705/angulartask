@@ -1,0 +1,22 @@
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option { 
+    display: block;
+    height: 48px;
+    -webkit-tap-highlight-color: blue !important;
+    width: 100%;
+    padding: 0;
+}
+.btnAlign {
+    height: 30px !important;
+    width: 30px !important;
+    margin-left: 50px;
+}
+.iconAlign {
+    margin-top: 5% !important;
+}
+.cardAlign {
+    margin-top: 150px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: larger;
+}

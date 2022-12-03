@@ -1,0 +1,31 @@
+
+<mat-selection-list [multiple]="false">
+    <div mat-subheader>Pomo & Co</div>
+    <mat-list-option *ngFor="let folder of folders" (click)="onSelect(folder.name)">
+      <mat-icon matListItemIcon [ngClass]="folder.name == 'Notification' ? 'iconAlign' : ''">{{folder.icon}}</mat-icon>
+      <div matListItemTitle>{{folder.name}}
+        <button *ngIf="folder.name == 'Notification'" class="btnAlign" mat-mini-fab color="primary">2
+          </button>
+      </div>
+    </mat-list-option>
+ </mat-selection-list> 
+
+ <mat-card class="mat-elevation-z4 cardAlign">
+    <div fxLayout="column" fxLayoutGap="10%">
+        <div fxFlex="5%" fxFlexAlign="end"><mat-icon>close</mat-icon></div>
+        <div fxFlex="15%">
+            <button mat-raised-button color="warn">  
+                <mat-icon>timer</mat-icon>
+            </button>
+        </div>
+        <div fxFlex="15%">Your Order is Now Ready</div>
+        <div fxFlex="15%">Splint Doumo</div>
+        <div fxFlex="15%">Order Id: #ED564F</div>
+        <div fxFlex="15%">
+            <button mat-raised-button color="primary">Details  
+                <mat-icon>arrow_forward</mat-icon>
+            </button>
+        </div>
+    </div>
+ </mat-card>
+

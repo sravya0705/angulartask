@@ -1,0 +1,41 @@
+<mat-drawer-container autosize style="height: 100%">
+    <mat-drawer #drawer  mode="side">
+        <app-side-nav (menuOption)="getMenuOption($event)"></app-side-nav>
+       </mat-drawer>     
+<div fxLayout="column" fxLayoutGap="2%" fxFlex="100%" style="margin: 5px;">
+  <div fxFlex="15%" fxLayout="row" fxLayoutGap="2%">
+    <div fxFlex="5">
+        <button mat-raised-button color="primary" (click)="drawer.toggle()">
+            <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+    </div>
+    <div fxFlex="40"></div>
+    <div fxFlex="10" *ngIf="menu != 'Restaurant Details'" class="iconAlign"><mat-icon>store</mat-icon>Da Otto<mat-icon>unfold_more</mat-icon></div>
+        <mat-form-field fxFlex="30" *ngIf="menu != 'Restaurant Details'" appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Search for Restaurant">
+            <mat-icon matPrefix>search</mat-icon>
+          </mat-form-field>
+    <div fxFlex="5" class="iconAlign" *ngIf="menu != 'Restaurant Details'">
+        <button mat-raised-button color="primary" (click)="drawer2.toggle()">
+            <mat-icon>filter_list</mat-icon>
+        </button>
+    </div>
+    <div fxFlex="45" *ngIf="menu == 'Restaurant Details'"></div>
+    <div fxFlex="5" class="iconAlign">
+        <button mat-raised-button color="warn">
+            <mat-icon>shopping_cart</mat-icon>
+        </button>
+    </div>
+  </div>
+  <div fxFlex>
+   <app-home *ngIf="menu == 'Home'" (restaurantName)="getRestaurantName($event)"></app-home>
+   <app-orders *ngIf="menu == 'Orders'"></app-orders>
+   <app-notification *ngIf="menu == 'Notification'"></app-notification>
+   <app-restaurant-details *ngIf="menu == 'Restaurant Details'" [restaurantName]="restaurantName"></app-restaurant-details>
+  </div>
+</div>
+<mat-drawer #drawer2  mode="side" position="end">
+    <app-filters ></app-filters>
+   </mat-drawer>  
+</mat-drawer-container>
